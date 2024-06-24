@@ -1,0 +1,34 @@
+eslint + prettier setup
+- npm install eslint-config-standard
+- npm install eslint-plugin-tailwindcss
+- npm install eslint-config-prettier
+- npm install prettier
+- rubah .eslintrc.json
+- buat .vscode -> settings.json
+
+setting tailwind
+- npm install tailwindcss-animate @tailwindcss/typography
+- rubah tailwind.config.ts
+- buat folder styles -> theme.css (ini isi nya custom2 CSS sesuai kebutuhan kita)
+- rubah app -> globals.css (ini isi nya custom2 CSS sesuai kebutuhan kita, yg dibuat secara global)
+
+routing
+- group
+- bikin group pakai tanda kurung ()
+- nanti di dalam group itu, bisa pakai 1 layout component yg sama
+
+perbedaan component di next (patokannya apakah butuh interaksi dengan user?)
+- client component
+1. kalau component butuh interaksi dengan user (button click, text input, trigger event, hooks)
+- rendered component
+1. kalau component engk butuh interaksi dari user
+2. (fetching, display static content, )
+
+cara memilih tipe2 render?
+if (page always show the same information) {
+use SSG (static site generation)
+} else if (page need information update every second) {
+use SSR (server side rendering)
+} else {
+use ISG (incremental static generation)
+}

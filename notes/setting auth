@@ -1,0 +1,10 @@
+- buka clerk.com
+- create application
+- copy api key nya ke env
+- npm install @clerk/nextjs
+- copy ClerkProvider di app -> layout.tsx
+- buat middleware untuk decide protected route (middleware.ts di root directory)
+- buat page sesuai path directory nya (harus ikut ketentuan clerk)
+  - auth -> sign-up -> [[...sign-up]] -> page.tsx
+  - auth -> sign-in -> [[...sign-in]] -> page.tsx
+- modif page.tsx nya pakai component dari clerk
