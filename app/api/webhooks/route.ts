@@ -63,14 +63,14 @@ export async function POST(req: Request) {
 
   // * added code
   if (eventType === "user.created") {
-    const { id, email_addresses, image_url, username, first_name, last_name } =
-      evt.data;
+    const { id, email_addresses, image_url, first_name, last_name } = evt.data;
 
     // * 1. create a new user in database, with user ACTIONS
     const mongoUser = await createUser({
       clerkId: id,
       name: `${first_name}${last_name ? ` ${last_name}` : ""}`,
-      username: username!,
+      // username: username!,  // * sementara disable evt.data.username nya, karena ada masalah di clerk nya
+      username: email_addresses[0].email_address,
       email: email_addresses[0].email_address,
       picture: image_url,
     });
