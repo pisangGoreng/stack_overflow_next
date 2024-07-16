@@ -10,3 +10,6 @@
   - format: URL + /api/webhooks -> sama kya directory nya
   - ambil secret nya, masukin ke .env.local 
   - update route.ts nya -> const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
+
+
+
