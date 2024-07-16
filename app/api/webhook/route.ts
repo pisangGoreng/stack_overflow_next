@@ -6,9 +6,8 @@ import { createUser, deleteUser, updateUser } from "@/lib/actions/user.action";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
-  // TODO: add your webhook secret to .env.local
-  const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
+  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
+  const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
@@ -56,6 +55,8 @@ export async function POST(req: Request) {
   // For this guide, you simply log the payload to the console
   // const { id } = evt.data;
   const eventType = evt.type;
+
+  console.log("🚀 ~ POST ~ MASUKKK GAN eventType:", { eventType });
 
   // * added code
   if (eventType === "user.created") {

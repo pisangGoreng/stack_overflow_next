@@ -4,3 +4,9 @@
   - buat file route nya di app/api/webhooks/route.ts
   - di dalam route.ts, bikin trigger function sesuai dengan eventType nya
   - di case ini, bikin user baru setiap ada user yg sign up
+
+- kalau apps udh ke deploy
+  - masukin link nya ke website clerk untuk webhooks nya
+  - format: URL + /api/webhooks -> sama kya directory nya
+  - ambil secret nya, masukin ke .env.local 
+  - update route.ts nya -> const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
