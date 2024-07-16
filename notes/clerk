@@ -11,5 +11,11 @@
   - ambil secret nya, masukin ke .env.local 
   - update route.ts nya -> const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
 
+- test webhook local
+  - bisa di test dari local, tapi harus deploy dlu (contoh ke vercel)
+  - jadi nanti link URL dari vercel, dimasukin ke clerk webhook dashboard nya
+  - perhatiin link URL nya, bisa berubah2
+  - nanti saat test di local, webhooks otomatis ke ekesusi & mentrigger function yg udh terdeploy di vercel 
+  - BUKAN function yg ada di local ya!!
 
 

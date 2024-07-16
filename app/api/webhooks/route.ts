@@ -6,11 +6,8 @@ import { createUser, deleteUser, updateUser } from "@/lib/actions/user.action";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
-  // const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
-
+  // * You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.NEXT_CLERK_WEBHOOK_SECRET;
-  console.log("🚀 ~ POST ~ WEBHOOK_SECRET:", WEBHOOK_SECRET);
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
@@ -59,13 +56,21 @@ export async function POST(req: Request) {
   // const { id } = evt.data;
   const eventType = evt.type;
 
-  console.log("🚀 ~ POST ~ MASUKKK GAN eventType:", { eventType });
-
   // * added code
   if (eventType === "user.created") {
     const { id, email_addresses, image_url, first_name, last_name } = evt.data;
 
     // * 1. create a new user in database, with user ACTIONS
+
+    console.log({
+      clerkId: id,
+      name: `${first_name}${last_name ? ` ${last_name}` : ""}`,
+      // username: username!,  // * sementara disable evt.data.username nya, karena ada masalah di clerk nya
+      username: email_addresses[0].email_address,
+      email: email_addresses[0].email_address,
+      picture: image_url,
+    });
+
     const mongoUser = await createUser({
       clerkId: id,
       name: `${first_name}${last_name ? ` ${last_name}` : ""}`,
