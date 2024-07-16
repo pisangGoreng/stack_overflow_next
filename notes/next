@@ -1,0 +1,6 @@
+- cara cek active path
+  - bisa pakai usePathName()
+  ```
+  const pathName = usePathname();
+  const isActive = (pathName.includes(item.route) && item.route.length > 1) || pathName === item.route;
+  ```

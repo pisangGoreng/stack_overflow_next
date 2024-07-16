@@ -1,0 +1,37 @@
+- model template
+    import { Schema, Document, model, models } from "mongoose";
+    export interface ITag extends Document {}
+
+    const TaqSchema = new Schema({});
+
+    const Tag = models.Tag || model("Tag", TaqSchema);
+
+    export default Tag;
+
+- auto generated schema from interface by chat gpt
+  ```
+    research this: 
+
+    export interface IUser extends Document {
+      clerkId: string; // untuk clerk auth
+      ... bla bla bla
+    }
+
+    and then turn this interface into a schema
+  ```
+
+- contoh upsert dengan relation
+  ```
+    const existingTag = await Tag.findOneAndUpdate(
+        { name: { $regex: new RegExp(`^${tag}$`, "i") } }, // * find a specific tag
+        { $setOnInsert: { name: tag }, $push: { question: question._id } }, // * update or create new tag & push to question relation
+        { upsert: true, new: true }
+      );
+  ```
+
+- contoh findall dengan relation _id  
+  ```
+    await Question.find({})
+      .populate({ path: "tags", model: Tag })
+      .populate({ path: "author", model: User });
+  ```

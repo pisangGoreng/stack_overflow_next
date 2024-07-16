@@ -1,0 +1,6 @@
+- sync data clerk ke database dengan webhook
+  - https://clerk.com/docs/integrations/webhooks/sync-data
+  - npm install svix
+  - buat file route nya di app/api/webhooks/route.ts
+  - di dalam route.ts, bikin trigger function sesuai dengan eventType nya
+  - di case ini, bikin user baru setiap ada user yg sign up

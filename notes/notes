@@ -1,4 +1,5 @@
 eslint + prettier setup
+
 - npm install eslint-config-standard
 - npm install eslint-plugin-tailwindcss
 - npm install eslint-config-prettier
@@ -7,22 +8,31 @@ eslint + prettier setup
 - buat .vscode -> settings.json
 
 setting tailwind
+
 - npm install tailwindcss-animate @tailwindcss/typography
 - rubah tailwind.config.ts
 - buat folder styles -> theme.css (ini isi nya custom2 CSS sesuai kebutuhan kita)
 - rubah app -> globals.css (ini isi nya custom2 CSS sesuai kebutuhan kita, yg dibuat secara global)
+- npx shadcn-ui@latest init -> default, Slate, yes
+- setelah shadcn init, tailwind.config.ts & global.css akan ke overwrite yg baru. tapi kita pakai CSS yg sebelum di overwrite (versi lama)
 
 routing
+
 - group
 - bikin group pakai tanda kurung ()
 - nanti di dalam group itu, bisa pakai 1 layout component yg sama
 
 perbedaan component di next (patokannya apakah butuh interaksi dengan user?)
+
 - client component
+
 1. kalau component butuh interaksi dengan user (button click, text input, trigger event, hooks)
+
 - rendered component
+
 1. kalau component engk butuh interaksi dari user
 2. (fetching, display static content, )
+   default -> server component
 
 cara memilih tipe2 render?
 if (page always show the same information) {
@@ -32,3 +42,26 @@ use SSR (server side rendering)
 } else {
 use ISG (incremental static generation)
 }
+
+Basic INPUT component
+
+<Input
+type="text"
+placeholder={placeHolder}
+value=""
+onChange={() => {}}
+className="paragraph-regular placeholder no-focus border-none shadow-none outline-none"
+/>
+
+- next actions (untuk proses CRUD databaase)
+  - buat action file nya -> question.action.ts
+  - jangan lupa pakai 'use server'
+  - edit next.config.js nya, tambahin experimental
+    experimental: {
+    serverActions: true,
+    mdxRs: true,
+    serverComponentsExternalPackages: ["mongoose"],
+    },
+  - buat file connections
+  - bikin model nya -> cek question.model.ts
+  - setelah proses insert, lakukan revalidatePath(path) untuk update cache nya

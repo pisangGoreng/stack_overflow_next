@@ -1,0 +1,8 @@
+- Type 'string | null' is not assignable to type 'string'. Type 'null' is not assignable to type 'string'.
+
+  ```
+    username: username // isi username nya bisa string & null
+
+    solve:
+    username: username!
+  ```

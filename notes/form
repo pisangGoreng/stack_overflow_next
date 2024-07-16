@@ -1,0 +1,36 @@
+- validations nya pakai zod
+
+- contoh custom trigger input
+  if (e.key === "Enter" && field.name === "tags") {
+      e.preventDefault();
+
+      const tagInput = e.target as HTMLInputElement;
+      const tagValue = tagInput.value.trim(); // remove white space
+
+      if (tagValue !== "") {
+        if (tagValue.length > 15) {
+          return form.setError("tags", {
+            type: "required",
+            message: "Tag must be less than 15 characters.",
+          });
+        }
+
+        if (!field.value.includes(tagValue as never)) {
+          form.setValue("tags", [...field.value, tagValue]);
+          tagInput.value = "";
+          form.clearErrors("tags");
+        }
+      } else {
+        form.trigger();
+      }
+    }
+
+- set custom error message  
+  form.setError("tags", { type: "required", message: "Tag must be less than 15 characters."});
+
+- set custom value
+  form.setValue("tags", [...field.value, tagValue]);
+
+- clear input & error message
+  tagInput.value = "";
+  form.clearErrors("tags");

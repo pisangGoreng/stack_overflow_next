@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -39,7 +38,6 @@ module.exports = {
         },
         "accent-blue": "#1DA1F2",
       },
-      // * nama google font
       fontFamily: {
         inter: ["var(--font-inter)"],
         spaceGrotesk: ["var(--font-spaceGrotesk)"],
@@ -59,7 +57,6 @@ module.exports = {
       screens: {
         xs: "420px",
       },
-      // * keyframes untuk animation
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
